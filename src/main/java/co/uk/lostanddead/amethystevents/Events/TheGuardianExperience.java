@@ -30,7 +30,7 @@ public class TheGuardianExperience implements Listener {
 
         if (event.getDamager() instanceof Guardian && event.getEntity() instanceof Player) {
              Player p = (Player) event.getEntity();
-             p.giveExp(10);
+             p.giveExp(3);
         }
     }
 }
