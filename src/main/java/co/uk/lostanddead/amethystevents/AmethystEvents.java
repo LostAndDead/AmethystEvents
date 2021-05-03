@@ -3,6 +3,7 @@ package co.uk.lostanddead.amethystevents;
 import co.uk.lostanddead.amethystevents.Events.KillerBunnies;
 import co.uk.lostanddead.amethystevents.Events.NicePhantoms;
 
+import co.uk.lostanddead.amethystevents.Events.TheGuardianExperience;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -38,6 +39,14 @@ public final class AmethystEvents extends JavaPlugin {
 
             case "Nice Phantoms": {
                 NicePhantoms eventClass = new NicePhantoms(this);
+                activeEventName = eventClass.getName();
+                activeEventDescription = eventClass.getDescription();
+                Bukkit.getPluginManager().registerEvents(eventClass, this);
+                break;
+            }
+
+            case "The Guardian Experience": {
+                TheGuardianExperience eventClass = new TheGuardianExperience(this);
                 activeEventName = eventClass.getName();
                 activeEventDescription = eventClass.getDescription();
                 Bukkit.getPluginManager().registerEvents(eventClass, this);
