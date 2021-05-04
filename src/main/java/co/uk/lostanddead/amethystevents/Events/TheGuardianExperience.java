@@ -2,13 +2,22 @@ package co.uk.lostanddead.amethystevents.Events;
 
 import co.uk.lostanddead.amethystevents.AmethystEvents;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Guardian;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.inventory.ItemStack;
+import java.util.concurrent.ThreadLocalRandom;
+
+import static org.bukkit.Bukkit.getServer;
+
 
 public class TheGuardianExperience implements Listener {
+
     public AmethystEvents core;
 
     public TheGuardianExperience(AmethystEvents core) {
@@ -23,11 +32,25 @@ public class TheGuardianExperience implements Listener {
         return "The Guardians are just misunderstood";
     }
 
+    ConsoleCommandSender console = getServer().getConsoleSender();
+
     @EventHandler
     public void EntityDamageByEntityEvent(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Guardian && event.getEntity() instanceof Player) {
+            int XP = ThreadLocalRandom.current().nextInt(0,4);
             Player p = (Player) event.getEntity();
-            p.giveExp(2);
+            p.giveExp(XP);
             }
         }
+
+    @EventHandler
+    public void mobDeath(EntityDeathEvent death) {
+        if (death.getEntity() instanceof Guardian) {
+            int drop = ThreadLocalRandom.current().nextInt(0,100);
+            if (drop >= 95) {
+                death.getDrops().add(new ItemStack(Material.DIAMOND, 1));
+            }
+            console.sendMessage(String.valueOf(drop));
+        }
     }
+}
