@@ -1,4 +1,4 @@
-# Yes it's messy, I know. We did some panic fixing. Will be prittied later.
+# Yes it's messy, I know. We did some panic fixing. Will be prettied later.
 
 # Amethyst Events
 This plugin is uses as the core system for managing server events on Amethyst Realms,
