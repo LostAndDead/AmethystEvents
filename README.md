@@ -1,3 +1,5 @@
+# Yes it's messy, I know. We did some panic fixing. Will be prittied later.
+
 # Amethyst Events
 This plugin is uses as the core system for managing server events on Amethyst Realms,
 <br>We do have a team of staff and developers who make and managed these events as well as the core system for the server (Not open source), but we could always use more events.
